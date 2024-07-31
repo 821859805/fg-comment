@@ -7,6 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>fg-comment</name>
     <description>fg-comment</description>
+    <packaging>pom</packaging>
 
     <properties>
         <java.version>1.8</java.version>
@@ -20,6 +21,7 @@
         <hutool.version>5.7.17</hutool.version>
         <redission.version>3.17.3</redission.version>
         <guava.verson>28.0-jre</guava.verson>
+        <lombok.version>1.18.8</lombok.version>
     </properties>
 
     <!-- 版本统一管理，子模块就不用管版本的事情了，统一在这管理 -->
@@ -57,9 +59,14 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
             </dependency>
+
+            <!-- springboot的依赖是pom类型，该依赖包含springboot大多数依赖 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <dependency>
@@ -72,7 +79,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <optional>true</optional>
+                <version>${lombok.version}</version>
             </dependency>
 
             <dependency>
