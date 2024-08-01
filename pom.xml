@@ -22,15 +22,26 @@
         <redission.version>3.17.3</redission.version>
         <guava.verson>28.0-jre</guava.verson>
         <lombok.version>1.18.8</lombok.version>
+        <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+        <commons.pool2>2.6.2</commons.pool2>
     </properties>
 
     <!-- 版本统一管理，子模块就不用管版本的事情了，统一在这管理 -->
     <dependencyManagement>
         <dependencies>
+            <!-- spring-cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot.version}</version>
                 <exclusions>
                     <exclusion>
                         <artifactId>spring-data-redis</artifactId>
@@ -58,6 +69,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
+                <version>${commons.pool2}</version>
             </dependency>
 
             <!-- springboot的依赖是pom类型，该依赖包含springboot大多数依赖 -->
@@ -85,8 +97,11 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
                 <scope>test</scope>
             </dependency>
+
+
 
             <dependency>
                 <groupId>com.baomidou</groupId>

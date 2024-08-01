@@ -1,0 +1,21 @@
+###查询id为1的商店数据
+GET {{shop_host}}/shop/shop/1
+
+###新增shop
+POST {{shop_host}}/shop/shop/
+Content-Type: application/json
+
+{
+
+  "typeId": 2,
+  "name": "测试店铺",
+  "area": "安徽",
+  "address": "中科大",
+  "images": "暂时没有",
+  "x": 41.58,
+  "y": 37.15,
+  "avgPrice": 1545,
+  "sold": 98442,
+  "comments": 42115,
+  "score": 40
+}

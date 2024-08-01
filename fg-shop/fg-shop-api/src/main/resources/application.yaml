@@ -1,0 +1,37 @@
+server:
+  port: 10358 #微服务端口号
+  servlet:
+    context-path: /shop #微服务路径
+spring:
+  application:
+    name: shop-service #微服务名称，很重要
+  profiles:
+    active: dev #生产环境
+  datasource:
+    url: jdbc:mysql://${aliyun_host}:3306/tb_shop?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${mysql.username}
+    password: ${mysql.password}
+  redis:
+    host: ${aliyun_host}
+    port: 6379
+    password: ${redis.password}
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 1
+        time-between-eviction-runs: 10s
+  jackson:
+    default-property-inclusion: non_null # JSON处理时忽略非空字段
+  rabbitmq:
+    host: ${aliyun_host}
+    virtual-host: /
+    username: ${rabbit.username}
+    password: ${rabbit.password}
+    port: 5672
+mybatis-plus:
+  type-aliases-package: com.fg.shop.model # 别名扫描包
+logging:
+  level:
+    com.fg: debug
