@@ -2,6 +2,7 @@ package com.fg.shop.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.fg.shop.model.po.Shop;
+import org.apache.ibatis.annotations.Mapper;
 
 
 /**

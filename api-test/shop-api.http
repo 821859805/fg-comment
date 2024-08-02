@@ -1,8 +1,8 @@
 ###查询id为1的商店数据
-GET {{shop_host}}/shop/shop/1
+GET {{gateway_host}}/shop/shop/1
 
 ###新增shop
-POST {{shop_host}}/shop/shop/
+POST {{gateway_host}}/shop/shop/
 Content-Type: application/json
 
 {

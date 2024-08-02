@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: 192.168.32.128:8848
+      discovery:
+        namespace: dev
+        group: fg-comment
+      config:
+        namespace: dev
+        group: fg-comment
+        file-extension: yaml
+        refresh-enabled: true
+
+  profiles:
+    active: dev
+
+
+
+
+

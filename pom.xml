@@ -13,7 +13,7 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+
         <redis.version>2.6.2</redis.version>
         <lettuce.version>6.1.6.RELEASE</lettuce.version>
         <mysql.version>8.0.30</mysql.version>
@@ -22,8 +22,12 @@
         <redission.version>3.17.3</redission.version>
         <guava.verson>28.0-jre</guava.verson>
         <lombok.version>1.18.8</lombok.version>
-        <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
         <commons.pool2>2.6.2</commons.pool2>
+
+        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.8.RELEASE</spring-cloud-alibaba.version>
+
     </properties>
 
     <!-- 版本统一管理，子模块就不用管版本的事情了，统一在这管理 -->
@@ -37,6 +41,26 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- springboot的依赖是pom类型，该依赖包含springboot大多数依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+            <!-- 注册中心依赖 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -72,14 +96,6 @@
                 <version>${commons.pool2}</version>
             </dependency>
 
-            <!-- springboot的依赖是pom类型，该依赖包含springboot大多数依赖 -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
             <dependency>
                 <groupId>mysql</groupId>
@@ -134,16 +150,18 @@
                 <artifactId>spring-boot-starter-amqp</artifactId>
             </dependency>
 
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-            </dependency>
+            <!-- todo 这个依赖是导致nacos无法启动的罪魁祸首 -->
+            <!--            <dependency>-->
+            <!--                <groupId>com.fasterxml.jackson.core</groupId>-->
+            <!--                <artifactId>jackson-databind</artifactId>-->
+            <!--            </dependency>-->
 
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.verson}</version>
             </dependency>
+
 
         </dependencies>
     </dependencyManagement>
